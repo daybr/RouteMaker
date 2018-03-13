@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Rail-Ro Route Maker</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html">내일로 루트 메이커</a></h1>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+    </header>
+    <nav>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="index.html">홈</a></li>
+            <li role="presentation"><a href="traintime.html">기차 시간표 조회</a></li>
+            <li class="active"><a href="city_info.html">도시 목록</a></li>
+            <li role="presentation"><a href="station_info.html">기차역 목록</a></li>
+            <li role="presentation"><a href="map_view.html">지도 view</a></li>
+        </ul>
+    </nav>
+    <h2>지역 코드 목록</h2>
+    <p id="oneline0"></p>
+    <a href="stationSeoul.html">서울특별시 열차역 조회</a>
+    <p id="oneline1"></p>
+    <p id="oneline2"></p>
+    <a href="stationBusan.html">부산광역시 열차역 조회</a>
+    <p id="oneline3"></p>
+    <a href="stationDaegu.html">대구광역시 열차역 조회</a>
+    <p id="oneline4"></p>
+    <p id="oneline5"></p>
+    <p id="oneline6"></p>
+    <a href="stationDaejeon.html">대전광역시 열차역 조회</a>
+    <p id="oneline7"></p>
+    <p id="oneline8"></p>
+    <p id="oneline9"></p>
+    <p id="oneline10"></p>
+    <p id="oneline11"></p>
+    <p id="oneline12"></p>
+    <p id="oneline13"></p>
+    <p id="oneline14"></p>
+    <p id="oneline15"></p>
+
+    <script>
+        var text = '{"response":{"header":{"resultCode":"00","resultMsg":"NORMAL SERVICE."},"body":{"items":{"item":[{"citycode":11,"cityname":"서울특별시"},{"citycode":12,"cityname":"세종특별시"},{"citycode":21,"cityname":"부산광역시"},{"citycode":22,"cityname":"대구광역시"},{"citycode":23,"cityname":"인천광역시"},{"citycode":24,"cityname":"광주광역시"},{"citycode":25,"cityname":"대전광역시"},{"citycode":26,"cityname":"울산광역시"},{"citycode":31,"cityname":"경기도"},{"citycode":32,"cityname":"강원도"},{"citycode":33,"cityname":"충청북도"},{"citycode":34,"cityname":"충청남도"},{"citycode":35,"cityname":"전라북도"},{"citycode":36,"cityname":"전라남도"},{"citycode":37,"cityname":"경상북도"},{"citycode":38,"cityname":"경상남도"}]}}}}';
+
+
+        var obj = JSON.parse(text);
+
+        for (var i = 0; i < 16; i++) {
+            document.getElementById("oneline" + i).innerHTML = obj.response.body.items.item[i].cityname + " : " + obj.response.body.items.item[i].citycode;
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Rail-Ro Route Maker</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html">내일로 루트 메이커</a></h1>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+    </header>
+    <nav>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="index.html">홈</a></li>
+            <li role="presentation"><a href="traintime.html">기차 시간표 조회</a></li>
+            <li role="presentation"><a href="city_info.html">도시 목록</a></li>
+            <li role="presentation"><a href="station_info.html">기차역 목록</a></li>
+            <li class="active"><a href="map_view.html">지도 view</a></li>
+        </ul>
+    </nav>
+    <br>
+    <input type="text" id="input" style="margin-left: 20px;">
+    <button onclick="input()">Search</button>
+    <br>
+
+    <!-- 아래부터 자바스크립트 -->
+    <script type="text/javascript">
+        var temp;
+
+        function input() {
+            var input = document.getElementById("input").value;
+            temp = input;
+        }
+
+        function output() {
+            document.getElementById("output").value = temp;
+        }
+                
+    </script>
+
+    <br>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var seoul = {
+                lat: 37.5511,
+                lng: 126.9833
+            };
+            var daegu = {
+                lat: 35.835,
+                lng: 128.56
+            };
+            var busan = {
+                lat: 35.1636,
+                lng: 129.0449
+            };
+            var daejeon = {
+                lat: 36.3394,
+                lng: 127.3943
+            };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 7,
+                center: seoul
+            });
+            var marker1 = new google.maps.Marker({
+                position: seoul,
+                map: map
+            });
+            var marker2 = new google.maps.Marker({
+                position: daegu,
+                map: map
+            });
+            var marker3 = new google.maps.Marker({
+                position: busan,
+                map: map
+            });
+            var marker4 = new google.maps.Marker({
+                position: daejeon,
+                map: map
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz6P35zj54q3JYoMI1tCba5Y2vc2sc81k&callback=initMap">
+    </script>
+</body>
+
+</html>

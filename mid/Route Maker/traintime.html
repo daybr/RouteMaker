@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Rail-Ro Route Maker</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html">내일로 루트 메이커</a></h1>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+    </header>
+    <nav>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="index.html">홈</a></li>
+            <li class="active"><a href="traintime.html">기차 시간표 조회</a></li>
+            <li role="presentation"><a href="city_info.html">도시 목록</a></li>
+            <li role="presentation"><a href="station_info.html">기차역 목록</a></li>
+            <li role="presentation"><a href="map_view.html">지도 view</a></li>
+        </ul>
+    </nav>
+    <p id="depcity"></p>
+    <p id="arrcity"></p>
+    <p id="deptime"></p>
+    <p id="arrtime"></p>
+    <p id="charge"></p>
+    <p id="traingradename"> </p>
+
+    <script>
+        var text = '{"response":{"header":{"resultCode":"00","resultMsg":"NORMAL SERVICE."},"body":{"items":{"item":[{"adultcharge":23700,"arrplacename":"대전","arrplandtime":20170303055900,"depplacename":"서울","depplandtime":20170303050500,"traingradename":"KTX-산천"},{"adultcharge":23700,"arrplacename":"대전","arrplandtime":20170303061000,"depplacename":"서울","depplandtime":20170303051500,"traingradename":"KTX"},{"adultcharge":23700,"arrplacename":"대전","arrplandtime":20170303064600,"depplacename":"서울","depplandtime":20170303054000,"traingradename":"KTX-산천"},{"adultcharge":10800,"arrplacename":"대전","arrplandtime":20170303075100,"depplacename":"서울","depplandtime":20170303055000,"traingradename":"무궁화호"},{"adultcharge":23700,"arrplacename":"대전","arrplandtime":20170303070100,"depplacename":"서울","depplandtime":20170303060000,"traingradename":"KTX"},{"adultcharge":23700,"arrplacename":"대전","arrplandtime":20170303071200,"depplacename":"서울","depplandtime":20170303061000,"traingradename":"KTX-산천"},{"adultcharge":16000,"arrplacename":"대전","arrplandtime":20170303080100,"depplacename":"서울","depplandtime":20170303061500,"traingradename":"ITX-새마을"},{"adultcharge":23700,"arrplacename":"대전","arrplandtime":20170303073100,"depplacename":"서울","depplandtime":20170303063500,"traingradename":"KTX"},{"adultcharge":10800,"arrplacename":"대전","arrplandtime":20170303084000,"depplacename":"서울","depplandtime":20170303064000,"traingradename":"무궁화호"},{"adultcharge":23700,"arrplacename":"대전","arrplandtime":20170303074500,"depplacename":"서울","depplandtime":20170303064500,"traingradename":"KTX"}]},"numOfRows":10,"pageNo":1,"totalCount":101}}}';
+
+        var obj = JSON.parse(text);
+
+        document.getElementById("depcity").innerHTML = "출발 도시 : " + obj.response.body.items.item[0].depplacename;
+        document.getElementById("arrcity").innerHTML = "도착 도시 : " + obj.response.body.items.item[0].arrplacename;
+        document.getElementById("deptime").innerHTML = "출발 시간 : " + obj.response.body.items.item[0].depplandtime;
+        document.getElementById("arrtime").innerHTML = "도착 시간 : " + obj.response.body.items.item[0].arrplandtime;
+        document.getElementById("charge").innerHTML = "요금 : " + obj.response.body.items.item[0].adultcharge;
+        document.getElementById("traingradename").innerHTML = "이용 기차 : " + obj.response.body.items.item[0].traingradename;
+
+        
+        
+        
+    </script>
+
+</body>
+
+</html>

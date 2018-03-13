@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Rail-Ro Route Maker</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html">내일로 루트 메이커</a></h1>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+    </header>
+    <nav>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="index.html">홈</a></li>
+            <li role="presentation"><a href="traintime.html">기차 시간표 조회</a></li>
+            <li class="presentation"><a href="city_info.html">도시 목록</a></li>
+            <li class="active"><a href="station_info.html">기차역 목록</a></li>
+            <li role="presentation"><a href="map_view.html">지도 view</a></li>
+        </ul>
+    </nav>
+    <h2>서울특별시 기차역 목록</h2>
+
+    <p id="oneline0"></p>
+    <p id="oneline1"></p>
+    <p id="oneline2"></p>
+    <p id="oneline3"></p>
+    <p id="oneline4"></p>
+    <p id="oneline5"></p>
+    <p id="oneline6"></p>
+    <p id="oneline7"></p>
+    <p id="oneline8"></p>
+    <p id="oneline9"></p>
+
+
+    <script>
+        var text11 = '{"response":{"header":{"resultCode":"00","resultMsg":"NORMAL SERVICE."},"body":{"items":{"item":[{"nodeid":"NAT010000","nodename":"서울"},{"nodeid":"NAT010032","nodename":"용산"},{"nodeid":"NAT010091","nodename":"영등포"},{"nodeid":"NAT020040","nodename":"상봉"},{"nodeid":"NAT130036","nodename":"서빙고"},{"nodeid":"NAT130070","nodename":"옥수"},{"nodeid":"NAT130104","nodename":"왕십리"},{"nodeid":"NAT130126","nodename":"청량리"},{"nodeid":"NAT130182","nodename":"광운대"},{"nodeid":"NAT140044","nodename":"화랑대"}]},"numOfRows":10,"pageNo":1,"totalCount":14}}}';
+
+        var obj = JSON.parse(text11);
+        var total = obj.response.body.totalCount;
+
+        for (var i = 0; i < 10; i++) {
+            document.getElementById("oneline" + i).innerHTML = obj.response.body.items.item[i].nodename + " : " + obj.response.body.items.item[i].nodeid;
+        }
+
+    </script>
+
+</body>
+
+</html>

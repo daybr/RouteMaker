@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Rail-Ro Route Maker</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html">내일로 루트 메이커</a></h1>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+    </header>
+    <nav>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="index.html">홈</a></li>
+            <li role="presentation"><a href="traintime.html">기차 시간표 조회</a></li>
+            <li class="presentation"><a href="city_info.html">도시 목록</a></li>
+            <li class="active"><a href="station_info.html">기차역 목록</a></li>
+            <li role="presentation"><a href="map_view.html">지도 view</a></li>
+        </ul>
+    </nav>
+    <h2>대전광역시 기차역 목록</h2>
+    
+    <p id="oneline0"></p>
+    <p id="oneline1"></p>
+    <p id="oneline2"></p>
+    <p id="oneline3"></p>
+    <p id="oneline4"></p>
+
+   
+    <script>
+        var text25 = '{"response":{"header":{"resultCode":"00","resultMsg":"NORMAL SERVICE."},"body":{"items":{"item":[{"nodeid":"NAT011668","nodename":"대전"},{"nodeid":"NAT030057","nodename":"서대전"},{"nodeid":"NAT030118","nodename":"가수원"},{"nodeid":"NAT030173","nodename":"흑석리"},{"nodeid":"NAT011524","nodename":"신탄진"}]},"numOfRows":10,"pageNo":1,"totalCount":5}}}';
+
+        var obj = JSON.parse(text25);
+        var total = obj.response.body.totalCount;
+
+        for (var i = 0; i < total; i++) {
+            document.getElementById("oneline" + i).innerHTML = obj.response.body.items.item[i].nodename + " : " + obj.response.body.items.item[i].nodeid;
+        }
+
+    </script>
+
+</body>
+
+</html>
